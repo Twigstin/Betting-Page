@@ -58,7 +58,7 @@
                 <div class="grid grid-cols-10 gap-2 mb-4">
                     
                 </div>
-<button class="w-full py-2 bg-primary hover:bg-red-600 text-white rounded-lg font-medium transition-colors duration-200">
+<button class="play-now w-full py-2 bg-primary hover:bg-red-600 text-white rounded-lg font-medium transition-colors duration-200">
                     Bet ₦1,000
                 </button>
             </div>
@@ -70,7 +70,7 @@
                 <div class="grid grid-cols-10 gap-2 mb-4">
                     
                 </div>
-                    <button class="w-full py-2 bg-primary hover:bg-red-600 text-white rounded-lg font-medium transition-colors duration-200">Bet ₦1,000</button>
+                    <button class="play-now w-full py-2 bg-primary hover:bg-red-600 text-white rounded-lg font-medium transition-colors duration-200">Bet ₦1,000</button>
             </div>
             
             <!-- Monthly Bet -->
@@ -80,7 +80,7 @@
                 <div class="grid grid-cols-10 gap-2 mb-4">
                     
                 </div>
-<button class="w-full py-2 bg-primary hover:bg-red-600 text-white rounded-lg font-medium transition-colors duration-200">
+<button class="play-now w-full py-2 bg-primary hover:bg-red-600 text-white rounded-lg font-medium transition-colors duration-200">
                     Bet ₦1,000
                 </button>
             </div>
@@ -94,8 +94,8 @@
             </button>
             
             <!-- Selections Panel -->
-            <div class="absolute bottom-20 right-0 w-72 bg-white rounded-lg shadow-xl p-4 transition-all duration-300"
-                :class="{'opacity-0 invisible': !showSelections, 'opacity-100 visible': showSelections}">
+            <div class="selecting absolute bottom-20 right-0 w-72 bg-white rounded-lg shadow-xl p-4 transition-all duration-300"
+                :class="{'opacity-0 invisible': !showSelections, 'opacity-100 visible': showSelections}"">
                 <h3 class="font-bold text-lg mb-3">Your Selections</h3>
                 
                 <!-- Daily Selection -->
@@ -150,7 +150,7 @@
                         <span>Total:</span>
                         <span x-text="'₦' + (selectedNumbers.daily.length + selectedNumbers.weekly.length + selectedNumbers.monthly.length) * 1000 + '.00'"></span>
                     </div>
-                    <button class="w-full mt-3 py-2 bg-primary hover:bg-red-600 text-white rounded-lg font-medium transition-colors duration-200">
+                    <button class=" place-btn w-full mt-3 py-2 bg-primary hover:bg-red-600 text-white rounded-lg font-medium transition-colors duration-200">
                         Place Bets
                     </button>
                 </div>
