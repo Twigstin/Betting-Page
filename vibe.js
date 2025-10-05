@@ -95,3 +95,18 @@ document.addEventListener('alpine:init', () => {
 document.addEventListener('DOMContentLoaded', () => {
     feather.replace();
 });
+
+
+const placebetDialog = document.querySelector(".selecting");
+const placebetDialogBtn = document.querySelector(".place-btn");
+
+placebetDialogBtn.addEventListener("click", () => {
+    placebetDialog.style.display = "none";
+})
+
+const playNow = document.querySelectorAll(".play-now");
+playNow.forEach(btn => {
+    btn.addEventListener("click", () => {
+        placebetDialog.style.display = "block";
+    })
+})
