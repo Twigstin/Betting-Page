@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>one100bet - Win Big with Numbers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <link rel="stylesheet" href="vibe.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-2xl font-bold text-primary">one100bet</h1>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <div class="bg-gray-100 px-3 py-1 rounded-full">
+                    <span class="font-medium">₦200,000.00</span>
+                </div>
+                
+                <div class="relative group">
+                    <button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
+                        <i data-feather="user"></i>
+                    </button>
+                    
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 hidden group-hover:block">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Deposit</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Withdraw</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+<!-- Main Number Grid -->
+
+        <h2>Select Numbers</h2>
+
+        <div class="grid num-grid" id="numberGrid"></div>
+        
+        <div class="summary">Total Value: ₦<span id="totalValue">0</span></div>
+
+
+
+        <!-- Bet Options -->
+        <div class="gridy">
+            <!-- Daily Bet -->
+            <div class="bg-white rounded-xl shadow-md p-6 place-bet">
+                <h3 class="text-lg font-bold mb-2">Daily Bet</h3>
+                <p class="text-sm text-gray-600 mb-4">Results today • Win ₦25,000</p>
+                <div class="grid grid-cols-10 gap-2 mb-4">
+                    
+                </div>
+<button class="w-full py-2 bg-primary hover:bg-red-600 text-white rounded-lg font-medium transition-colors duration-200">
+                    Bet ₦1,000
+                </button>
+            </div>
+            
+            <!-- Weekly Bet -->
+            <div class="bg-white rounded-xl shadow-md p-6 place-bet">
+                <h3 class="text-lg font-bold mb-2">Weekly Bet</h3>
+                <p class="text-sm text-gray-600 mb-4">Results every Thursday • Win ₦50,000</p>
+                <div class="grid grid-cols-10 gap-2 mb-4">
+                    
+                </div>
+                    <button class="w-full py-2 bg-primary hover:bg-red-600 text-white rounded-lg font-medium transition-colors duration-200">Bet ₦1,000</button>
+            </div>
+            
+            <!-- Monthly Bet -->
+            <div class="bg-white rounded-xl shadow-md p-6 place-bet">
+                <h3 class="text-lg font-bold mb-2">Monthly Bet</h3>
+                <p class="text-sm text-gray-600 mb-4">Results at month end • Win ₦75,000</p>
+                <div class="grid grid-cols-10 gap-2 mb-4">
+                    
+                </div>
+<button class="w-full py-2 bg-primary hover:bg-red-600 text-white rounded-lg font-medium transition-colors duration-200">
+                    Bet ₦1,000
+                </button>
+            </div>
+        </div>
+        
+        <!-- Floating Action Button -->
+        <div class="fixed bottom-6 right-6 z-20">
+            <button class="floating-action w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center shadow-xl cursor-pointer"
+                @click="showSelections = !showSelections">
+                <i data-feather="shopping-cart"></i>
+            </button>
+            
+            <!-- Selections Panel -->
+            <div class="absolute bottom-20 right-0 w-72 bg-white rounded-lg shadow-xl p-4 transition-all duration-300"
+                :class="{'opacity-0 invisible': !showSelections, 'opacity-100 visible': showSelections}">
+                <h3 class="font-bold text-lg mb-3">Your Selections</h3>
+                
+                <!-- Daily Selection -->
+                <div class="periodic-selection">
+                <div class="mb-3 time" x-show="selectedNumbers.daily.length > 0">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="font-medium">Daily</span>
+                        <span class="text-sm text-gray-600">₦25,000</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <template x-for="num in selectedNumbers.daily" :key="'daily-'+num">
+                            <div class="w-8 h-8 rounded-full bg-red-100 text-primary flex items-center justify-center text-sm font-medium">
+                                <span x-text="num"></span>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                
+                <!-- Weekly Selection -->
+                <div class="mb-3 time" x-show="selectedNumbers.weekly.length > 0">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="font-medium">Weekly</span>
+                        <span class="text-sm text-gray-600">₦50,000</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <template x-for="num in selectedNumbers.weekly" :key="'weekly-'+num">
+                            <div class="w-8 h-8 rounded-full bg-red-100 text-primary flex items-center justify-center text-sm font-medium">
+                                <span x-text="num"></span>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                
+                <!-- Monthly Selection -->
+                <div class="mb-3 time" x-show="selectedNumbers.monthly.length > 0">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="font-medium">Monthly</span>
+                        <span class="text-sm text-gray-600">₦75,000</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <template x-for="num in selectedNumbers.monthly" :key="'monthly-'+num">
+                            <div class="w-8 h-8 rounded-full bg-red-100 text-primary flex items-center justify-center text-sm font-medium">
+                                <span x-text="num"></span>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="pt-2 border-t mt-3">
+                    <div class="flex justify-between font-medium">
+                        <span>Total:</span>
+                        <span x-text="'₦' + (selectedNumbers.daily.length + selectedNumbers.weekly.length + selectedNumbers.monthly.length) * 1000 + '.00'"></span>
+                    </div>
+                    <button class="w-full mt-3 py-2 bg-primary hover:bg-red-600 text-white rounded-lg font-medium transition-colors duration-200">
+                        Place Bets
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
+    <script src="vibe.js"></script>
+</body>
+</html>
